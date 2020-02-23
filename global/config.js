@@ -1,0 +1,1 @@
+export const apiServer = "server_url";
