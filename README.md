@@ -5,6 +5,7 @@ React Native project
 Firstly, nodejs should be installed.
 
 npm install -g expo-cli
+
 npm install -g yarn
 
 
