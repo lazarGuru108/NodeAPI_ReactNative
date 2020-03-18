@@ -3,8 +3,24 @@ import { Container, Header, Content, Form, Item, Input, View, Row, Text, Col, Pi
 import { StyleSheet, TextInput } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import NumberInput from '../../components/NumberInput';
+import SearchableDropdown from '../../components/SearchableDropdown'
 
 const fontSize = 12;
+
+const list = [
+    {
+        title: 'state 01',
+        id: 1
+    },
+    {
+        title: 'state 02',
+        id: 2
+    },
+    {
+        title: 'state 03',
+        id: 3
+    }
+]
 
 class EditSuppliers extends Component {
     constructor(props) {
@@ -24,6 +40,10 @@ class EditSuppliers extends Component {
         if (item === 'country') this.setState({ selectedCountry: value })
     }
 
+    onSelectItem = (e, item) => {
+        // console.log('Parent: ', item.title);
+    }
+
     render() {
         const { value } = this.state;
         return (
@@ -31,7 +51,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -41,7 +61,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Code Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Code Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -51,7 +71,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Email </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Email </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -61,7 +81,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Mobile </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Mobile </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -71,7 +91,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Gtin </Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Gtin </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -81,7 +101,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputArea}>
                     <Col size={3}>
                         <Row style={styles.inputAreaLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Address </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Address </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -96,21 +116,28 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>City </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>City </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <TextInput placeholder="City" style={styles.nameInput} />
                     </Col>
                 </Row>
-                <Row style={styles.inputRow}>
+                <Row style={{
+                     height: 'auto',
+                     // padding: 10, 
+                     // margin: 0,
+                     justifyContent: 'center',
+                     alignItems: 'center'
+                }}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>State </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>State </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
-                        <Picker
+                        <SearchableDropdown style={{margin: 10, borderRadius: 50}} list = {list} onSelectItem={(e,item) => this.onSelectItem(e, item)}/>
+                        {/* <Picker
                             mode='dropdown'
                             iosIcon={<Icon name="arrow-down" />}
                             style={{ width: undefined, margin: 10 }}
@@ -126,24 +153,22 @@ class EditSuppliers extends Component {
                             <Picker.Item label="Debit Card" value="key2" />
                             <Picker.Item label="Credit Card" value="key3" />
                             <Picker.Item label="Net Banking" value="key4" />
-                        </Picker>
+                        </Picker> */}
                     </Col>
                 </Row>
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Country </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Country </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Picker
                             mode='dropdown'
                             // iosIcon={<Icon name="arrow-down" />}
-                            style={{ width: undefined, margin: 10 }}
+                            style={{ width: undefined, margin: 10, color: 'white' }}
                             placeholder="Select ..."
-                            placeholderStyle={{ color: "#bfc6ea" }}
                             note={false}
-                            placeholderIconColor="#007aff"
                             selectedValue={this.state.selectedCountry}
                             onValueChange={(value) => this.onValueChange('country', value)}
                         >
@@ -157,16 +182,16 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Store </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Store </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Row style={{ alignItems: 'center', height: 15 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Select / Deselect</Text>
+                                <Text style={[{ fontSize: fontSize },styles.whiteText]}>Select / Deselect</Text>
                             </Col>
                         </Row>
                         {/* <Row>
@@ -190,26 +215,26 @@ class EditSuppliers extends Component {
                     <Col size={10}>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 01</Text>
+                                <Text style={[{ fontSize: fontSize },styles.whiteText]}>Store 01</Text>
                             </Col>
                         </Row>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 02</Text>
+                                <Text style={[{ fontSize: fontSize },styles.whiteText]}>Store 02</Text>
                             </Col>
                         </Row>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 03</Text>
+                                <Text style={[{ fontSize: fontSize },styles.whiteText]}>Store 03</Text>
                             </Col>
                         </Row>
                     </Col>
@@ -217,7 +242,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputArea}>
                     <Col size={3}>
                         <Row style={styles.inputAreaLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Detail </Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Detail </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -231,7 +256,7 @@ class EditSuppliers extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Order </Text>
+                            <Text style={[{ fontSize: fontSize },styles.whiteText]}>Order </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -276,13 +301,16 @@ class EditSuppliers extends Component {
 
 const styles = StyleSheet.create({
     content: {
+        backgroundColor: '#00000088',
         paddingVertical: 10
     },
     nameInput: {
         margin: 10,
         height: 30,
         backgroundColor: 'white',
-        padding: 5
+        padding: 5,
+        paddingLeft: 10,
+        borderRadius: 50,
     },
 
     inputRow: {
@@ -297,8 +325,7 @@ const styles = StyleSheet.create({
         height: 80,
         justifyContent: 'center',
         alignItems: 'center',
-        // padding: 10, 
-        padding: 5,
+        borderRadius: 20
     },
 
     inputLabelRow: {
@@ -310,22 +337,34 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'flex-start'
     },
-    textArea: { textAlignVertical: 'top', backgroundColor: 'white', margin: 10, marginTop: 5, padding: 5 },
+    textArea: { 
+        textAlignVertical: 'top', 
+        backgroundColor: 'white', 
+        margin: 10, 
+        marginTop: 5, 
+        padding: 5,
+        borderRadius: 20 
+    },
 
     saveButton: {
         marginTop: 5,
         height: 25,
-        width: 64,
+        width: 90,
         backgroundColor: '#00C0EF',
         justifyContent: 'center',
+        borderRadius: 50
     },
     resetButton: {
         marginTop: 5,
         height: 25,
-        width: 64,
+        width: 90,
         backgroundColor: '#DD4B39',
         justifyContent: 'center',
+        borderRadius: 50
     },
+    whiteText: {
+        color: 'white'
+    }
 });
 
 export default EditSuppliers;

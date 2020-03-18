@@ -1,20 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
 import MainHeader from '../../components/MainHeader';
-import { Button, Container, Row, Icon, Col } from 'native-base';
-import EditPurchase from './EditPurchase';
-import ViewPurchase from './ViewPurchase';
-import ImportProduct from './ImportProduct';
+import { Container, Row, Icon, Col } from 'native-base';
+import EditTransfer from './EditTransfer';
+import ViewTransfer from './ViewTransfer';
 import background from '../../assets/images/background.jpg';
 import TopIcon from '../../components/TopIcon';
 
-const dataArray = [
-    { title: "First Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
-];
-
-class ManagePurchase extends React.Component {
+class Transfer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -28,7 +21,7 @@ class ManagePurchase extends React.Component {
         if (openedKey === headerKey) {
             headerKey === 'list' ? this.setState({ openedKey: 'add' }) : this.setState({ openedKey: 'list' });
         } else {
-            headerKey === 'list' ? this.setState({ openedKey: 'list' }) : this.setState({ openedKey: headerKey });
+            headerKey === 'list' ? this.setState({ openedKey: 'list' }) : this.setState({ openedKey: 'add' });
         }
     }
 
@@ -47,7 +40,7 @@ class ManagePurchase extends React.Component {
                                 <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
                             </Col>
                             <Col size={8}>
-                                <Text>Add New Purchase</Text>
+                                <Text>Add New Transfer</Text>
                             </Col>
                             <Col size={.7}>
                                 {
@@ -56,25 +49,7 @@ class ManagePurchase extends React.Component {
                             </Col>
                         </Row>
                         {openedKey === 'add' ?
-                            <EditPurchase />
-                            :
-                            null
-                        }
-                        <Row style={styles.accordionHeader} onTouchEnd={() => this.handleTouchHeader('import')}>
-                            <Col size={1} style={{ alignItems: 'center' }}>
-                                <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
-                            </Col>
-                            <Col size={8}>
-                                <Text>Import</Text>
-                            </Col>
-                            <Col size={.7}>
-                                {
-                                    <Icon type='FontAwesome' name={openedKey === 'import' ? 'minus' : 'plus'} style={{ fontSize: 15 }} />
-                                }
-                            </Col>
-                        </Row>
-                        {openedKey === 'import' ?
-                            <ImportProduct />
+                            <EditTransfer />
                             :
                             null
                         }
@@ -83,7 +58,7 @@ class ManagePurchase extends React.Component {
                                 <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
                             </Col>
                             <Col size={8}>
-                                <Text>Purchase List</Text>
+                                <Text>Transfer List</Text>
                             </Col>
                             <Col size={.7}>
                                 {
@@ -92,7 +67,7 @@ class ManagePurchase extends React.Component {
                             </Col>
                         </Row>
                         {openedKey === 'list' ?
-                            <ViewPurchase />
+                            <ViewTransfer />
                             :
                             null
                         }
@@ -121,4 +96,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ManagePurchase;
+export default Transfer;

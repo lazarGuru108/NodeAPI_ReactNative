@@ -1,0 +1,468 @@
+{
+    "id": 1,
+    "rolename": "",
+    "fields": [
+        {
+            "field_name": "Sale",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Customer",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Product",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Supplier",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Purchase",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Return",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Report",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Accounts",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Bank",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Tax",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Human Resource",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Service",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Commission",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        },
+        {
+            "field_name": "Setting",
+            "permission": [
+                {
+                    "permission_name": "new_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "manage_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "POS_sale",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                },
+                {
+                    "permission_name": "GUI_pos",
+                    "create": false,
+                    "read": false,
+                    "update": false,
+                    "delete": false
+                }
+            ]
+        }
+    ]
+}

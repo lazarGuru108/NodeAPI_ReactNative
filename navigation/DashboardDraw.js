@@ -12,6 +12,12 @@ import ManageProduct from '../screens/Product/ManageProduct';
 import ManageSale from '../screens/Sales/ManageSale';
 import ManageUsers from '../screens/Users/ManageUsers';
 import Test from '../screens/Test/Test';
+import ManageStores from '../screens/Stores/ManageStores';
+import Analytics from '../screens/Analytics/Analytics';
+import Transfer from '../screens/Transfer/Transfer';
+import SendEmail from '../screens/SendEmail/SendEmail';
+import Appointment from '../screens/Appointment/Appointment';
+import ManageRole from '../screens/ManageRole/ManageRole';
 
 const DashboardDrawer = createDrawerNavigator({
     Dashboard: DashboardScreen,
@@ -23,6 +29,12 @@ const DashboardDrawer = createDrawerNavigator({
     ManageProduct: ManageProduct,
     ManageSale: ManageSale,
     ManageUsers: ManageUsers,
+    ManageStores: ManageStores,
+    Analytics: Analytics,
+    Transfer: Transfer,
+    SendEmail: SendEmail,
+    Appointment: Appointment,
+    ManageRole: ManageRole,
     Test: Test,
     AddProduct: AddSupplier
 }, {
@@ -45,7 +57,6 @@ export default DashboardStack = createStackNavigator({
     Main: {
         screen: DashboardDrawer,
         navigationOptions: ({ navigation }) => ({
-            
             headerTitle:()=><Text style={{color: 'lightgreen', fontWeight: 'bold'}}>{navigation.state.index?navigation.state.routes[navigation.state.index].params.name : 'Dashboard'}</Text>,
             headerLeft: () => {
                 return <View style={{ padding: 5 }}>

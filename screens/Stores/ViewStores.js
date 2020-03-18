@@ -1,77 +1,73 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, ScrollView, Text, Alert, TouchableOpacity, Image, Clipboard, Platform } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, Alert, TouchableOpacity } from 'react-native';
 import { Row as RowLay, Col as ColLay, Picker } from 'native-base';
-import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
-import { Icon, Button } from 'native-base';
+import { Table, TableWrapper, Row } from 'react-native-table-component';
+import { Icon } from 'native-base';
+import { Button } from 'react-native-elements';
 import { TextInput } from 'react-native';
-import { ButtonGroup, CheckBox } from 'react-native-elements';
-import noImage from '../../assets/images/noimage.jpg';
-import * as Print from 'expo-print';
 
-class ViewProduct extends Component {
+class ViewStores extends Component {
     constructor(props) {
         super(props);
-        const elementButton = (value, row) => {
-            if (value === 'check')
+        const elementButton = (value, status) => {
+            if (value === 'action')
                 return (
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <CheckBox checked={true} size={15} color={'grey'} />
-                    </View>
-                );
-            if (value === 'image')
-                return (
-                    <View style={{ width: 30, height: 30, justifyContent: 'center', alignItems: 'center' }}>
-                        <Image source={noImage} style={{ width: '100%' }} resizeMode='contain'></Image>
-                    </View>
-                );
-            if (value === 'purchase')
-                return (
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Button style={styles.purchasebtn} onPress={() => this._alertIndex(value, row)}>
-                            <Icon type='FontAwesome' name='shopping-cart' style={{ fontSize: 12 }} />
-                        </Button>
-                    </View>
-                );
-            if (value === 'barcode')
-                return (
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Button style={styles.barcodebtn} onPress={() => this._alertIndex(row)}>
-                            <Icon type='FontAwesome' name='barcode' style={{ fontSize: 12 }} />
-                        </Button>
-                    </View>
-                );
-            if (value === 'view')
-                return (
-                    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Button style={styles.viewbtn} onPress={() => this._alertIndex(row)}>
-                            <Icon type='FontAwesome' name='eye' style={{ fontSize: 12 }} />
-                        </Button>
+                        {status === 'active' ?
+                            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                <Button buttonStyle={styles.activebtn} onPress={() => this._alertIndex(value)}
+                                    title={status} titleStyle={{fontSize: 12}}
+                                    icon={
+                                        <Icon type='FontAwesome' name='check' style={{ fontSize: 12, color: 'white' }} />
+                                    }
+                                >
+                                </Button>
+                            </View>
+                            :
+                            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                <Button disabled buttonStyle={styles.inactivebtn} onPress={() => this._alertIndex(value)}
+                                    title={status} titleStyle={{fontSize: 12}}
+                                    disabledStyle={{backgroundColor: "#86CC94"}}
+                                    disabledTitleStyle={{fontSize: 12, color: 'white'}}
+                                    icon={
+                                        <Icon type='FontAwesome' name='check' style={{ fontSize: 12, color: 'white' }} />
+                                    }
+                                >
+                                </Button>
+                            </View>
+                        }
                     </View>
                 );
             if (value === 'edit')
                 return (
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Button style={styles.editbtn} onPress={() => this._alertIndex(row)}>
-                            <Icon type='FontAwesome' name='pencil' style={{ fontSize: 12 }} />
+                        <Button buttonStyle={styles.editbtn} onPress={() => this._alertIndex(value)}
+                            icon={
+                                <Icon type='FontAwesome' name='pencil' style={{ fontSize: 12, color: 'white' }} />
+                            }
+                        >
                         </Button>
                     </View>
                 );
             if (value === 'delete')
                 return (
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Button style={styles.deletebtn} onPress={() => this._alertIndex(row)}>
-                            <Icon type='AntDesign' name='delete' style={{ fontSize: 12 }} />
+                        <Button buttonStyle={styles.deletebtn} onPress={() => this._alertIndex(value)}
+                            icon={
+                                <Icon type='AntDesign' name='delete' style={{ fontSize: 12, color: 'white' }} />
+                            }
+                        >
                         </Button>
                     </View>
                 );
         };
         this.state = {
-            tableHead: [elementButton('check'), 'Image', 'P.Code', 'Name', 'Supplier', 'Stock', 'Purchase Price', 'Selling Price', 'View', 'Edit', 'Purchase', 'Print Barcode', 'Delete'],
-            widthArr: [50, 60, 120, 120, 120, 100, 120, 120, 80, 100, 100, 100, 100],
+            tableHead: ['SL', 'Name', 'Country', 'Address', 'Created At', 'Edit', 'Delete', 'Action'],
+            widthArr: [40, 60, 60, 100, 80, 100, 100, 100],
             tableData: [
-                [elementButton('check', 0), elementButton('image'), '67444356', 'Dtohn', 'Admin', '0.00 Pcs', '600.00', '240.00', elementButton('view', 0), elementButton('edit', 0), elementButton('purchase', 0), elementButton('barcode', 0), elementButton('delete', 0)],
-                [elementButton('check', 1), elementButton('image'), '865657653432', 'Ytailse', 'User 1', '876.00 Pcs', '544.00', '211.00', elementButton('view', 1), elementButton('edit', 1), elementButton('purchase', 1), elementButton('barcode', 1), elementButton('delete', 1)],
-                [elementButton('check', 2), elementButton('image'), '234642367', 'Swassll', 'Customer', '553.00 Pcs', '655.00', '155.00', elementButton('view', 2), elementButton('edit', 2), elementButton('purchase', 2), elementButton('barcode', 2), elementButton('delete', 2)],
+                ['1', 'John', 'Weee', 'Address 01', '2020-02-22', elementButton('edit'), elementButton('delete'), elementButton('action', 'active')],
+                ['2', 'Uhoa', 'Dool', 'Address 02', '2020-01-12', elementButton('edit'), elementButton('delete'), elementButton('action', 'inactive')],
+                ['3', 'Jsoae', 'Rsdff', 'Address 03', '2020-02-16', elementButton('edit'), elementButton('delete'), elementButton('action', 'active')]
 
             ],
             selected2: undefined
@@ -89,39 +85,17 @@ class ViewProduct extends Component {
         });
     }
 
-    onPrint = () => {
-        let printerUrl = '';
-        if(Platform.OS === 'ios')
-            Print.selectPrinterAsync().then(ret => printerUrl = ret.url);
-        let options = {
-            html: "<p>Printed Text</p>",
-            base64: true,
-            printerUrl: printerUrl,
-        }
-        Print.printAsync(options).then(() => console.log("printed"));
-    }
-
-    onClipboard = () => {
-        let data = [
-            [ '67444356', 'Dtohn', 'Admin', '0.00 Pcs', '600.00', '240.00'],
-            [  '865657653432', 'Ytailse', 'User 1', '876.00 Pcs', '544.00', '211.00'],
-            [ '234642367', 'Swassll', 'Customer', '553.00 Pcs', '655.00', '155.00']
-        ]
-        Clipboard.setString('hello world' + data);
-    }
-
-    onPrintPDF = () => {
-        let options = {
-            html: "<p>Printed Text</p>",
-            base64: true,
-        }
-        Print.printToFileAsync(options).then(ret => console.log(ret.uri));
-    }
-
     render() {
         const state = this.state;
         const tableData = this.state.tableData;
-
+        /* for (let i = 0; i < 30; i += 1) {
+            const rowData = [];
+            for (let j = 0; j < 9; j += 1) {
+                rowData.push(`${i}${j}`);
+            }
+            tableData.push(rowData);
+        }
+ */
         return (
             <View style={styles.container}>
                 <RowLay style={{ height: 40 }}>
@@ -156,12 +130,12 @@ class ViewProduct extends Component {
                     </ColLay>
                     <ColLay>
                         <RowLay style={{ justifyContent: 'center', alignItems: 'flex-end', paddingBottom: 5 }}>
-                            <TouchableOpacity onPress={() => this.onPrint()}>
+                            <TouchableOpacity>
                                 <View style={styles.toolIconView}>
                                     <Icon type="FontAwesome" name="print" style={{ fontSize: 15, color: '#444444' }}></Icon>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.onClipboard()}>
+                            <TouchableOpacity>
                                 <View style={styles.toolIconView}>
                                     <Icon type="FontAwesome" name="copy" style={{ fontSize: 15, color: '#E04B7C' }}></Icon>
                                 </View>
@@ -176,7 +150,7 @@ class ViewProduct extends Component {
                                     <Icon type="FontAwesome" name="file-text-o" style={{ fontSize: 15, color: '#37AF9F' }}></Icon>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => this.onPrintPDF()}>
+                            <TouchableOpacity>
                                 <View style={styles.toolIconView}>
                                     <Icon type="FontAwesome" name="file-pdf-o" style={{ fontSize: 15, color: '#2B849C' }}></Icon>
                                 </View>
@@ -209,23 +183,7 @@ class ViewProduct extends Component {
                     </ColLay>
                 </RowLay>
                 <ScrollView horizontal={true}>
-                    <ScrollView style={styles.container}>
-                        <Table borderStyle={{ borderColor: 'white', borderWidth: 0.5 }}>
-                            <Row data={state.tableHead} widthArr={state.widthArr} style={styles.head} textStyle={styles.text} />
-                            {
-                                state.tableData.map((rowData, index) => (
-                                    <TableWrapper key={index} style={styles.row}>
-                                        {
-                                            rowData.map((cellData, cellIndex) => (
-                                                <Cell key={cellIndex} data={cellData} textStyle={styles.text} width={state.widthArr[cellIndex]} />
-                                            ))
-                                        }
-                                    </TableWrapper>
-                                ))
-                            }
-                        </Table>
-                    </ScrollView>
-                    {/* <View>
+                    <View>
                         <Table borderStyle={{ borderWidth: 1, borderColor: '#C1C0B9' }}>
                             <Row data={state.tableHead} widthArr={state.widthArr} style={styles.header} textStyle={styles.text} />
                         </Table>
@@ -244,7 +202,7 @@ class ViewProduct extends Component {
                                 }
                             </Table>
                         </ScrollView>
-                    </View> */}
+                    </View>
                 </ScrollView>
             </View>
         );
@@ -253,29 +211,19 @@ class ViewProduct extends Component {
 
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, paddingTop: 10, backgroundColor: '#fff' },
-    head: { height: 30, backgroundColor: 'lightgrey' },
+    header: { height: 30, backgroundColor: 'lightgrey' },
     text: { textAlign: 'center', fontWeight: '100' },
     dataWrapper: { marginTop: -1 },
     row: { height: 40, backgroundColor: '#f1f3f6' },
-    statusbtn1: { width: 40, height: 18, backgroundColor: '#00a65a', borderRadius: 20 },
-    statusbtn2: { width: 40, height: 18, backgroundColor: '#DD4B39', borderRadius: 20 },
-    purchasebtn: { width: 62, height: 22, backgroundColor: '#008D4C', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
-    barcodebtn: { width: 62, height: 22, backgroundColor: '#3C8DBC', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
+    inactivebtn: {  width: 62, height: 22, backgroundColor: '#86CC94', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
+    activebtn: { width: 62, height: 22, backgroundColor: '#00C0EF', borderRadius: 3, justifyContent: 'center', alignItems: 'center'},
     editbtn: { width: 62, height: 22, backgroundColor: '#3C8DBC', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
-    viewbtn: { width: 62, height: 22, backgroundColor: '#00C0EF', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
     deletebtn: { width: 62, height: 22, backgroundColor: '#DD4B39', borderRadius: 3, justifyContent: 'center', alignItems: 'center' },
     btnText: { textAlign: 'center', color: 'white', fontSize: 10 },
 
     toolIconView: {
         width: 23, height: 23, borderWidth: 1, borderColor: 'gray', justifyContent: 'center', alignItems: 'center'
-    },
-
-    // container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-    //   head: { height: 40, backgroundColor: '#808B97' },
-    text: { margin: 6 },
-    row: { flexDirection: 'row', backgroundColor: '#f1f3f6' },
-    btn: { width: 58, height: 18, backgroundColor: '#78B7BB', borderRadius: 2 },
-    btnText: { textAlign: 'center', color: '#fff' }
+    }
 });
 
-export default ViewProduct;
+export default ViewStores;

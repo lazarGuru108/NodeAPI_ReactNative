@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Form, Item, Input, View, Row, Text, Col, Picker, Icon, ListItem, Body } from 'native-base';
 import { StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
-import { CheckBox, Button } from 'react-native-elements';
+import { CheckBox, Button, withTheme } from 'react-native-elements';
 import noImage from '../../assets/images/noimage.jpg';
 import NumberInput from '../../components/NumberInput';
+import '../../assets/commonStyle.js';
 
 const fontSize = 12;
 
@@ -31,7 +32,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Attachment </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Attachment </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -47,19 +48,16 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Product Type </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Product Type </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Picker
                             mode='dropdown'
                             iosIcon={<Icon name="arrow-down" />}
-                            style={{ width: undefined, margin: 10 }}
+                            style={[{ width: undefined, margin: 10 }, styles.whiteText]}
                             placeholder="Select ..."
-                            placeholderStyle={{ color: "#bfc6ea" }}
-                            placeholderIconColor="#007aff"
                             selectedValue={this.state.selectedState}
-                            style={{ fontSize: 10 }}
                             onValueChange={(value) => this.onValueChange('state', value)}
 
                         >
@@ -71,7 +69,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Name </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -81,17 +79,20 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>P.Code </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>P.Code </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Row style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <TextInput placeholder="Code Name" style={{
                                 margin: 10,
+                                marginLeft: 13,
                                 height: 30,
                                 backgroundColor: 'white',
                                 padding: 5,
-                                width: 250
+                                width: 250,
+                                paddingLeft: 10,
+                                borderRadius: 50,
                             }} value={this.state.uname} />
                             <TouchableOpacity>
                                 <View style={{ width: 30, height: 30, justifyContent: 'center', alignItems: 'flex-start' }}>
@@ -104,7 +105,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Category </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Category </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -112,12 +113,9 @@ class EditProduct extends Component {
                             <Picker
                                 mode='dropdown'
                                 iosIcon={<Icon name="arrow-down" />}
-                                style={{ width: undefined, margin: 10 }}
+                                style={[{ width: undefined, margin: 10 }, styles.whiteText]}
                                 placeholder="Select ..."
-                                placeholderStyle={{ color: "#bfc6ea" }}
-                                placeholderIconColor="#007aff"
                                 selectedValue={this.state.selectedState}
-                                style={{ fontSize: 10 }}
                                 onValueChange={(value) => this.onValueChange('state', value)}
 
                             >
@@ -138,7 +136,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Supplier </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Supplier </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -146,12 +144,9 @@ class EditProduct extends Component {
                             <Picker
                                 mode='dropdown'
                                 iosIcon={<Icon name="arrow-down" />}
-                                style={{ width: undefined, margin: 10 }}
+                                style={[{ width: undefined, margin: 10 },styles.whiteText]}
                                 placeholder="Select ..."
-                                placeholderStyle={{ color: "#bfc6ea" }}
-                                placeholderIconColor="#007aff"
                                 selectedValue={this.state.selectedState}
-                                style={{ fontSize: 10 }}
                                 onValueChange={(value) => this.onValueChange('state', value)}
 
                             >
@@ -172,7 +167,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Brand </Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Brand </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -180,12 +175,12 @@ class EditProduct extends Component {
                             <Picker
                                 mode='dropdown'
                                 iosIcon={<Icon name="arrow-down" />}
-                                style={{ width: undefined, margin: 10 }}
+                                style={[{ width: undefined, margin: 10 },styles.whiteText]}
                                 placeholder="Select ..."
-                                placeholderStyle={{ color: "#bfc6ea" }}
-                                placeholderIconColor="#007aff"
+                                // placeholderStyle={{ color: "#bfc6ea" }}
+                                // placeholderIconColor="#007aff"
                                 selectedValue={this.state.selectedState}
-                                style={{ fontSize: 10 }}
+                                // style={{ fontSize: 10 }}
                                 onValueChange={(value) => this.onValueChange('state', value)}
 
                             >
@@ -206,7 +201,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>HSN Code </Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>HSN Code </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -216,7 +211,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Product Price </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Product Price </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -226,7 +221,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Product Tax </Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Product Tax </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -234,12 +229,9 @@ class EditProduct extends Component {
                             <Picker
                                 mode='dropdown'
                                 iosIcon={<Icon name="arrow-down" />}
-                                style={{ width: undefined, margin: 10 }}
+                                style={[{ width: undefined, margin: 10 },styles.whiteText]}
                                 placeholder="Select ..."
-                                placeholderStyle={{ color: "#bfc6ea" }}
-                                placeholderIconColor="#007aff"
                                 selectedValue={this.state.selectedState}
-                                style={{ fontSize: 10 }}
                                 onValueChange={(value) => this.onValueChange('state', value)}
 
                             >
@@ -260,19 +252,16 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Tax Method </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Tax Method </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Picker
                             mode='dropdown'
                             iosIcon={<Icon name="arrow-down" />}
-                            style={{ width: undefined, margin: 10 }}
+                            style={[{ width: undefined, margin: 10 },styles.whiteText]}
                             placeholder="Select ..."
-                            placeholderStyle={{ color: "#bfc6ea" }}
-                            placeholderIconColor="#007aff"
                             selectedValue={this.state.selectedState}
-                            style={{ fontSize: 10 }}
                             onValueChange={(value) => this.onValueChange('state', value)}
 
                         >
@@ -284,16 +273,16 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Store </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Store </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Row style={{ alignItems: 'center', height: 15 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Select / Deselect</Text>
+                                <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Select / Deselect</Text>
                             </Col>
                         </Row>
                     </Col>
@@ -314,26 +303,26 @@ class EditProduct extends Component {
                     <Col size={10}>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 01</Text>
+                                <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Store 01</Text>
                             </Col>
                         </Row>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 02</Text>
+                                <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Store 02</Text>
                             </Col>
                         </Row>
                         <Row style={{ alignItems: 'center', marginVertical: 5 }}>
                             <Col size={1} style={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                                <CheckBox checked={true} size={15} checkedColor={'gray'} />
+                                <CheckBox checked={true} size={15} checkedColor={'white'} />
                             </Col>
                             <Col size={5}>
-                                <Text style={{ fontSize: fontSize }}>Store 03</Text>
+                                <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Store 03</Text>
                             </Col>
                         </Row>
                     </Col>
@@ -342,7 +331,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>City </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>City </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -353,18 +342,16 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Status </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Status </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
                         <Picker
                             mode='dropdown'
                             // iosIcon={<Icon name="arrow-down" />}
-                            style={{ width: undefined, margin: 10 }}
+                            style={[{ width: undefined, margin: 10 },styles.whiteText]}
                             placeholder="Select ..."
-                            placeholderStyle={{ color: "#bfc6ea" }}
                             note={false}
-                            placeholderIconColor="#007aff"
                             selectedValue={this.state.selectedCountry}
                             onValueChange={(value) => this.onValueChange('country', value)}
                         >
@@ -377,7 +364,7 @@ class EditProduct extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Order </Text>
+                            <Text style={[{ fontSize: fontSize }, styles.whiteText]}>Order </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -422,13 +409,16 @@ class EditProduct extends Component {
 
 const styles = StyleSheet.create({
     content: {
+        backgroundColor: '#00000088',
         paddingVertical: 10
     },
     nameInput: {
         margin: 10,
         height: 30,
         backgroundColor: 'white',
-        padding: 5
+        padding: 5,
+        paddingLeft: 10,
+        borderRadius: 50,
     },
 
     inputRow: {
@@ -443,8 +433,6 @@ const styles = StyleSheet.create({
         height: 80,
         justifyContent: 'center',
         alignItems: 'center',
-        // padding: 10, 
-        padding: 5,
     },
 
     inputLabelRow: {
@@ -461,17 +449,22 @@ const styles = StyleSheet.create({
     saveButton: {
         marginTop: 5,
         height: 25,
-        width: 64,
+        width: 90,
         backgroundColor: '#00C0EF',
         justifyContent: 'center',
+        borderRadius: 50,
     },
     resetButton: {
         marginTop: 5,
         height: 25,
-        width: 64,
+        width: 90,
         backgroundColor: '#DD4B39',
         justifyContent: 'center',
+        borderRadius: 50,
     },
+    whiteText: {
+        color: 'white',
+    }
 });
 
 export default EditProduct;

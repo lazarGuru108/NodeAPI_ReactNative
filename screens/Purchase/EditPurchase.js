@@ -48,7 +48,7 @@ class EditPurchase extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Date </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={{ fontSize: fontSize, color: 'white' }}>Date </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -78,7 +78,7 @@ class EditPurchase extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Ref. No. </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={{ fontSize: fontSize, color: 'white' }}>Ref. No. </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -88,7 +88,7 @@ class EditPurchase extends Component {
                 <Row style={styles.inputArea}>
                     <Col size={3}>
                         <Row style={styles.inputAreaLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Notes </Text>
+                            <Text style={{ fontSize: fontSize, color: 'white' }}>Notes </Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -103,7 +103,7 @@ class EditPurchase extends Component {
                 <Row style={styles.inputRow}>
                     <Col size={3}>
                         <Row style={styles.inputLabelRow}>
-                            <Text style={{ fontSize: fontSize }}>Attachment </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
+                            <Text style={{ fontSize: fontSize, color: 'white' }}>Attachment </Text><Text style={{ color: 'red', fontSize: fontSize }}>*</Text>
                         </Row>
                     </Col>
                     <Col size={10}>
@@ -283,13 +283,16 @@ class EditPurchase extends Component {
 
 const styles = StyleSheet.create({
     content: {
+        backgroundColor: '#00000088',
         paddingVertical: 10
     },
     nameInput: {
         margin: 10,
         height: 30,
         backgroundColor: 'white',
-        padding: 5
+        padding: 5,
+        paddingLeft: 10,
+        borderRadius: 50,
     },
     addProductInput: {
         height: 28,
@@ -310,8 +313,7 @@ const styles = StyleSheet.create({
         height: 80,
         justifyContent: 'center',
         alignItems: 'center',
-        // padding: 10, 
-        padding: 5,
+        borderRadius: 20
     },
 
     inputLabelRow: {
@@ -323,21 +325,30 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'flex-start'
     },
-    textArea: { textAlignVertical: 'top', backgroundColor: 'white', margin: 10, marginTop: 5, padding: 5 },
+    textArea: { 
+        borderRadius: 20,
+        textAlignVertical: 'top', 
+        backgroundColor: 'white', 
+        margin: 10, 
+        marginTop: 0, 
+        padding: 10
+    },
 
     saveButton: {
         marginTop: 5,
         height: 25,
-        width: 80,
+        width: 100,
         backgroundColor: '#00C0EF',
         justifyContent: 'center',
+        borderRadius: 50,
     },
     resetButton: {
         marginTop: 5,
         height: 25,
-        width: 80,
+        width: 100,
         backgroundColor: '#DD4B39',
         justifyContent: 'center',
+        borderRadius: 50,
     },
 
     tableContainer: {

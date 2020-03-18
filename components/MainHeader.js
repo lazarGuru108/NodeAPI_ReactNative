@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { View, Button, Text, Container, Content, StyleProvider, Icon } from 'native-base';
 import { Row, Col } from 'react-native-easy-grid';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
+import beach from '../assets/images/beach.jpg'
 
 class MainHeader extends Component {
     render() {
         return (
-            <Container>
+            <Container style={{ backgroundColor:"#00000000"}}>
                 <Row style={{ padding: 10, paddingBottom: 0, justifyContent: 'center', alignItems: 'center' }}>
+                
                     <TouchableOpacity>
                         <Button style={styles.button1} iconLeft bordered success>
                             <Icon name='balance-scale' type="FontAwesome" style={styles.buttonFont} />
@@ -34,6 +36,11 @@ class MainHeader extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
     button1: {
         width: 90,
         height: 40,

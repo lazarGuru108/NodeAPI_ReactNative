@@ -1,52 +1,78 @@
 import React from 'react';
 import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
 import MainHeader from '../../components/MainHeader';
-import { Button, Container, Row, Icon, Col, Card, CardItem, Body, Header, Content, Accordion } from 'native-base';
-import EditSuppliers from './EditSuppliers';
-import ViewSuppliers from './ViewSuppliers';
+import { Container, Row, Icon, Col } from 'native-base';
+import EditRole from './EditRole';
+import ViewRole from './ViewRole';
+import initRole from './initRole.json';
+import testData from './testData.json';
 import background from '../../assets/images/background.jpg';
 import TopIcon from '../../components/TopIcon';
 
-const dataArray = [
-    { title: "First Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
-    { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
-];
-
-class ManageSupplier extends React.Component {
+class ManageRole extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             openedKey: 'list',
+            initData: testData,
+            selectedRecord: initRole,
+            selectedRecordKey: -1,
+            isEditing: false,
         };
     }
 
     handleTouchHeader = (headerKey) => {
         let openedKey = this.state.openedKey;
         if (openedKey === headerKey) {
-            headerKey === 'list' ? this.setState({ openedKey: 'add' }) : this.setState({ openedKey: 'list' });
+            headerKey === 'list' ? this.setState({ openedKey: 'add', selectedRecordKey: -1, selectedRecord: initRole }) : this.setState({ openedKey: 'list' });
         } else {
-            headerKey === 'list' ? this.setState({ openedKey: 'list' }) : this.setState({ openedKey: 'add' });
+            headerKey === 'list' ? this.setState({ openedKey: 'list' }) : this.setState({ openedKey: 'add', selectedRecordKey: -1, selectedRecord: initRole });
         }
     }
 
+    handleDelete = (key) => {
+        let data = this.state.initData.roles;
+        delete data[key];
+        data.splice(key,1);
+        let initData = {...this.state.initData, roles: data};
+        this.setState({initData: initData});
+    }
+
+    handleEdit = (key) => {
+        let roles = this.state.initData.roles;
+        this.setState({selectedRecord: roles[key],selectedRecordKey: key, isEditing: true, openedKey: 'add'});
+    }
+
+    saveRole = (saveData) => {
+        let {initData, selectedRecordKey,isEditing } = this.state;
+        if(isEditing){
+            initData.roles[selectedRecordKey] = saveData;
+        }
+        else{
+            let len = initData.roles.length;
+            let save = {...saveData, id: initData.roles[len-1].id + 1};
+            initData.roles.push(save);
+        }
+        this.setState({initData: initData, openedKey: 'list', isEditing: false});
+    }
+
     render() {
-        let { openedKey } = this.state;
+        let { openedKey, initData,selectedRecord } = this.state;
         return (
             <ImageBackground style={styles.container} source={background}>
             <ScrollView>
                 <Row style={{ height: 80, flexDirection: 'column', justifyContent: 'center' }}>
                     <MainHeader />
                 </Row>
-                <TopIcon />
+                <TopIcon />               
                 <Container style={{ justifyContent: 'flex-start', backgroundColor: '#f1f3f600', padding: 15, height: 'auto' }}>
                     <Row style={styles.accordionHeader} onTouchEnd={() => this.handleTouchHeader('add')}>
                         <Col size={1} style={{ alignItems: 'center' }}>
                             <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
                         </Col>
                         <Col size={8}>
-                            <Text>Add New Supplier</Text>
+                            <Text>Add New Role</Text>
                         </Col>
                         <Col size={.7}>
                             {
@@ -55,7 +81,7 @@ class ManageSupplier extends React.Component {
                         </Col>
                     </Row>
                     {openedKey === 'add' ?
-                        <EditSuppliers />
+                        <EditRole initData={selectedRecord} saveRole={(saveData) => {this.saveRole(saveData)}} />
                         :
                         null
                     }
@@ -64,7 +90,7 @@ class ManageSupplier extends React.Component {
                             <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
                         </Col>
                         <Col size={8}>
-                            <Text>Supplier List</Text>
+                            <Text>Role List</Text>
                         </Col>
                         <Col size={.7}>
                             {
@@ -73,7 +99,7 @@ class ManageSupplier extends React.Component {
                         </Col>
                     </Row>
                     {openedKey === 'list' ?
-                        <ViewSuppliers />
+                        <ViewRole initData={initData} handleEdit={(key) => this.handleEdit(key)} handleDelete={(key) => this.handleDelete(key)}/>
                         :
                         null
                     }
@@ -91,8 +117,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-      },
-    
+    },
+
     accordionHeader: {
         backgroundColor: "#ffffff88",
         height: 30,
@@ -102,4 +128,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ManageSupplier;
+export default ManageRole;

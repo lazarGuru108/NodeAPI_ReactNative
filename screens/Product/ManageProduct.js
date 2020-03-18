@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
 import MainHeader from '../../components/MainHeader';
 import { Container, Row, Icon, Col } from 'native-base';
 import EditProduct from './EditProduct';
 import ViewProduct from './ViewProduct';
 import ImportProduct from './ImportProduct';
+import background from '../../assets/images/background.jpg';
+import TopIcon from '../../components/TopIcon';
 
 class ManageProduct extends React.Component {
 
@@ -27,41 +29,13 @@ class ManageProduct extends React.Component {
     render() {
         let { openedKey } = this.state;
         return (
+            <ImageBackground style={styles.container} source={background}>
             <ScrollView>
                 <Row style={{ height: 80, flexDirection: 'column', justifyContent: 'center' }}>
                     <MainHeader />
                 </Row>
-                <Row style={{ height: 60, backgroundColor: 'white', justifyContent: 'flex-end', paddingRight: 20 }}>
-                    <Col size={20}>
-                        <Row>
-                            <Col size={16}></Col>
-                            <Col size={2} style={{ alignItems: 'flex-end' }}>
-                                <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f5', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Icon name='alert-outline' type="MaterialCommunityIcons" style={{fontSize: 22}}/>
-                                    <Icon name='circle' type="FontAwesome"
-                                        style={{
-                                            color: 'red',
-                                            fontSize: 12,
-                                            position: 'absolute', top: -4, right: -4
-                                        }}
-                                    />
-                                    <Icon type='FontAwesome' name='circle-o'
-                                        style={{
-                                            fontSize: 5, color: 'white',
-                                            position: 'absolute', top: -.8, right: -.8
-                                        }}
-                                    />
-                                </View>
-                            </Col>
-                            <Col size={2} style={{ alignItems: 'flex-end' }}>
-                                <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f5', justifyContent: 'center', alignItems: 'center' }}>
-                                    <Icon name='settings' type="SimpleLineIcons"  style={{fontSize: 22}}/>
-                                </View>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Container style={{ justifyContent: 'flex-start', backgroundColor: '#f1f3f6', padding: 15, height: 'auto' }}>
+                <TopIcon />
+                <Container style={{ justifyContent: 'flex-start', backgroundColor: '#f1f3f600', padding: 15, height: 'auto' }}>
                     <Row style={styles.accordionHeader} onTouchEnd={() => this.handleTouchHeader('add')}>
                         <Col size={1} style={{ alignItems: 'center' }}>
                             <Icon type='FontAwesome' name={'plus'} style={{ fontSize: 15 }} />
@@ -120,16 +94,21 @@ class ManageProduct extends React.Component {
                 <Row>
                 </Row>
             </ScrollView>
-
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    accordionHeader: {
-        backgroundColor: "gray",
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      accordionHeader: {
+        backgroundColor: "#ffffff88",
         height: 30,
-        borderWidth: 1,
+        borderWidth: 0.5,
         borderColor: '#f5f5f5',
         alignItems: 'center',
     }

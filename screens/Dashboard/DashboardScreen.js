@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
 import MainHeader from '../../components/MainHeader';
-import { Button, Container, Row, Icon, Col, Card, CardItem, Body } from 'native-base';
+import { Container, Row, Icon, Col } from 'native-base';
+import background from '../../assets/images/background.jpg';
+import TopIcon from '../../components/TopIcon';
 
 class DashboardScreen extends React.Component {
 
@@ -14,43 +16,38 @@ class DashboardScreen extends React.Component {
 
     render() {
         return (
-            <View>
+            <ImageBackground style={styles.container} source={background}>
                 <ScrollView>
                     <View>
                         <Row style={{ height: 80, flexDirection: 'column', justifyContent: 'center' }}>
                             <MainHeader />
                         </Row>
-                        <Row style={{ height: 60, backgroundColor: 'white', justifyContent: 'flex-end', paddingRight: 20 }}>
+                        <TopIcon/>
+                        {/* <Row style={{ height: 60, backgroundColor: 'white', justifyContent: 'flex-end', paddingRight: 20, backgroundColor: "#00000000" }}>
                             <Col size={20}>
                                 <Row>
                                     <Col size={16}></Col>
                                     <Col size={2} style={{ alignItems: 'flex-end' }}>
-                                        <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f5', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f500', justifyContent: 'center', alignItems: 'center' }}>
                                             <Icon name='alert-outline' type="MaterialCommunityIcons" style={{ fontSize: 22 }} />
-                                            <Icon name='circle' type="FontAwesome"
+                                            <Text
                                                 style={{
                                                     color: 'red',
                                                     fontSize: 12,
-                                                    position: 'absolute', top: -4, right: -4
+                                                    position: 'absolute', top: -8, right: -4,
                                                 }}
-                                            />
-                                            <Icon type='FontAwesome' name='circle-o'
-                                                style={{
-                                                    fontSize: 5, color: 'white',
-                                                    position: 'absolute', top: -.8, right: -.8
-                                                }}
-                                            />
+                                            >0</Text>
                                         </View>
                                     </Col>
                                     <Col size={2} style={{ alignItems: 'flex-end' }}>
-                                        <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f5', justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ width: 25, height: 25, backgroundColor: '#f5f5f500', justifyContent: 'center', alignItems: 'center' }}>
                                             <Icon name='settings' type="SimpleLineIcons" style={{ fontSize: 22 }} />
                                         </View>
                                     </Col>
                                 </Row>
                             </Col>
-                        </Row>
-                        <Container style={{ justifyContent: 'flex-start', backgroundColor: '#f1f3f6', paddingTop: 15 }}>
+                        </Row> */}
+                        <Container style={{ justifyContent: 'flex-start', backgroundColor: '#f1f3f6', paddingTop: 15, backgroundColor: "#bdbaba00" }}>
                             <Row style={{ justifyContent: 'center', height: 150 }}>
                                 <Col size={1}></Col>
                                 <Col size={20}>
@@ -123,12 +120,18 @@ class DashboardScreen extends React.Component {
                         <Row></Row>
                     </View>
                 </ScrollView>
-            </View>
+            </ImageBackground>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     topRow: {
         justifyContent: 'center',
         alignItems: 'flex-end'

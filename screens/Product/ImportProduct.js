@@ -22,13 +22,13 @@ class ImportProduct extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Row style={{ backgroundColor: '#D2D6DE', padding: 20 }}>
+                <Row style={{ backgroundColor: '#D2D6DE', padding: 20,borderRadius: 20 }}>
                     <Text>
                         The first line in downloaded .xls file should remain as it is. Please do not change the order of columns. Please make sure the (*.xls) file is UTF-8 encoded. The images should be uploaded in storage/products/ (or where you pointed) folder. The System will check that if a row exists then update, if not exist then insert.
                     </Text>
                 </Row>
                 <Row style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <Text style={{ fontSize: 15 }}>Download Sample Format File</Text>
+                    <Text style={[{ fontSize: 15 }, styles.whiteText]}>Download Sample Format File</Text>
                     <TouchableOpacity>
                         <Row style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
                             <Icon type="FontAwesome" name="download" style={{ fontSize: 15, color: '#00C0EF' }}></Icon>
@@ -39,7 +39,7 @@ class ImportProduct extends Component {
                 <Row style={{ justifyContent: 'center', alignItems: 'center', padding: 5 }}>
                     <Col style={{ justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity onPress={this._pickDocument}>
-                            <Text>Select *.xlsx file</Text>
+                            <Text style={styles.whiteText}>Select *.xlsx file</Text>
                         </TouchableOpacity>
                     </Col>
                     <Col style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -61,13 +61,16 @@ class ImportProduct extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#00000088',
         padding: 20,
     },
 
     fileInput: {
         padding: 5,
         backgroundColor: 'white',
-        width: 200, height: 25
+        width: 200, height: 25,
+        paddingLeft: 10,
+        borderRadius: 50,
     },
 
     importButtonRow: {
@@ -79,12 +82,16 @@ const styles = StyleSheet.create({
     importButton: {
         width: 300,
         height: 25,
+        borderRadius: 50,
         justifyContent: 'center',
         backgroundColor: '#008D4C',
     },
 
     iconStyle: {
         fontSize: 12,
+    }, 
+    whiteText: {
+        color: 'white'
     }
 });
 
