@@ -22,6 +22,19 @@
             ]
         },
         {
+            "title": "Customer",
+            "hasChild": true,
+            "icon": "balance-scale",
+            "isOpen": false,
+            "children": [
+                {
+                    "title": "Manage Customer",
+                    "url": "ManageCustomer",
+                    "icon": null
+                }
+            ]
+        },
+        {
             "title": "Product",
             "hasChild": true,
             "icon": "shopping-bag",

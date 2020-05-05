@@ -18,6 +18,7 @@ import Transfer from '../screens/Transfer/Transfer';
 import SendEmail from '../screens/SendEmail/SendEmail';
 import Appointment from '../screens/Appointment/Appointment';
 import ManageRole from '../screens/ManageRole/ManageRole';
+import ManageCustomer from '../screens/Customer/ManageCustomer';
 
 const DashboardDrawer = createDrawerNavigator({
     Dashboard: DashboardScreen,
@@ -36,7 +37,8 @@ const DashboardDrawer = createDrawerNavigator({
     Appointment: Appointment,
     ManageRole: ManageRole,
     Test: Test,
-    AddProduct: AddSupplier
+    AddProduct: AddSupplier,
+    ManageCustomer: ManageCustomer
 }, {
     initialRouteName: 'Dashboard',
     contentOptions: {
